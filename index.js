@@ -55,7 +55,7 @@ setBtn.addEventListener("click", function getSeconds(event){
 
 setInterval(function(){     
     getPrices();
-}, getSeconds());
+}, seconds);
 
 
 
