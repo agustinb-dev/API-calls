@@ -4,7 +4,7 @@ const API_URL_POLKADOT = "https://api.coingecko.com/api/v3/coins/markets?vs_curr
 
 
 
-async function apiResponse(response) {
+function apiResponse(response) {
     let apiData = response.json();
     return apiData
   }
@@ -44,18 +44,15 @@ refreshBtn.addEventListener("click", function (event){
     getPrices();  
 })
 
-let seconds = 2000;
+let seconds = 4000;
+let intervalId = setInterval(getPrices, seconds);
 
 const setBtn = document.getElementById("set-seconds");
 setBtn.addEventListener("click", function getSeconds(event){
-    let seconds = document.getElementById('seconds').value
-    seconds = Number(seconds);
-    return seconds
+    event.preventDefault();
+    seconds = Number(document.getElementById('seconds').value);
+    clearInterval(intervalId);
+    intervalId = setInterval(getPrices, seconds);
 })
-
-setInterval(function(){     
-    getPrices();
-}, seconds);
-
 
 
