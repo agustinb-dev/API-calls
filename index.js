@@ -40,17 +40,18 @@ function getPrices() {
 getPrices();
 
 const refreshBtn = document.getElementById("refresh-btn");
-refreshBtn.addEventListener("click", function (event){
+refreshBtn.addEventListener("click", function(event){
     getPrices();  
 })
 
-let seconds = 4000;
+let seconds = 20000;
 let intervalId = setInterval(getPrices, seconds);
 
 const setBtn = document.getElementById("set-seconds");
 setBtn.addEventListener("click", function getSeconds(event){
     event.preventDefault();
     seconds = Number(document.getElementById('seconds').value);
+    console.log(`Price update set to ${seconds} ms`);
     clearInterval(intervalId);
     intervalId = setInterval(getPrices, seconds);
 })
